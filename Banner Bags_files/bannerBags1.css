@@ -1,0 +1,35 @@
+/* 
+    Document   : bannerBags1
+    Created on : Nov 20, 2013, 9:07:57 PM
+    Author     : kevin
+    Description:
+        CSS FOR BANNER BAGS
+        
+*/
+
+root { 
+    display: block;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+
+.sizeFont {
+    font-size: 14pt
+}
+
+#nolacebag {
+
+    font-size: 13pt;
+}
+
+.cellWidth {
+    width: 100px;
+    border-color: black;
+}
+
+#noWrap {
+  display: none; 
+}

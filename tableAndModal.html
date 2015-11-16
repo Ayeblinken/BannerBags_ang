@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+        <title>Inventory Shipping</title>
+        <!-- Bootstrap core CSS -->
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="new.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <!-- UI Select Styles and JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.min.js"></script>
+        <script>
+    var myApp = angular.module('myApp', ['ui.bootstrap']);
+
+    myApp.controller('MyCtrl', function MyCtrl($scope, $modal, $log) {
+        $scope.records = [
+            {
+                "kp_OrderShipTrackingID":"119171",
+                "kf_OrderID":"148559",
+                "kf_OrderShipID":"317624",
+                "t_Company":"Fedex Ground",
+                "t_ShipperService":"Ground",
+                "nb_NoChargeForGroundShipping":"",
+                "t_Category":"PSV",
+                "t_DateShipped":"1/30/2015",
+                "t_PackageCharge":"12.88",
+                "n_ShippingCharge":"18.3",
+                "t_ChargeType":"Standard Rate",
+                "t_TrackingID":"625065111008",
+                "t_Height":"7",
+                "t_Width":"16",
+                "t_Length":"23",
+                "t_Weight":"1.00",
+                "t_InsuredValueAmount":"250",
+                "nb_IncludeBoxCharge":"1"
+            }
+        ];
+
+        $scope.clearRecord = function( record ){
+            for(var i=$scope.records.length-1;i>=0;i--){
+                if($scope.records[i].kp_OrderShipTrackingID == record.kp_OrderShipTrackingID) $scope.records.splice(i,1);
+            }
+        }
+
+        $scope.open = function (size) {
+
+          var modalInstance = $modal.open({
+            templateUrl: 'myModalContent.html',
+            controller: 'ModalInstanceCtrl',
+            size: size,
+            resolve: {
+              record: function () {
+                return $scope.records[0];
+              }
+            }
+          });
+
+          modalInstance.result.then(function (track) {
+            $scope.records[0].t_PackageCharge = track.packageCharge;
+            $scope.records[0].n_ShippingCharge = track.shippingCharge;
+            $scope.records[0].t_TrackingID = track.trackingID;
+            $scope.records[0].t_ChargeType = track.chargeType;
+          }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+          });
+        };
+      });
+
+      // Please note that $modalInstance represents a modal window (instance) dependency.
+      // It is not the same as the $modal service used above.
+
+      myApp.controller('ModalInstanceCtrl', function ($scope, $modalInstance, record) {
+
+        $scope.trackNShip = {
+            packageCharge: record.t_PackageCharge,
+            shippingCharge: record.n_ShippingCharge,
+            trackingID: record.t_TrackingID,
+            chargeType: record.t_ChargeType
+        }
+
+        $scope.ok = function () {
+          $modalInstance.close($scope.trackNShip);
+        };
+
+        $scope.cancel = function () {
+          $modalInstance.dismiss('cancel');
+        };
+    });
+
+    </script>
+    </head>
+    <body ng-app="myApp" ng-controller="MyCtrl">
+        <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Add Shipping Charge</h3>
+        </div>
+        <div class="modal-body form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-4 text-right">Charge Type</label>
+                <div class="col-sm-6">
+                	<select class="form-control">
+  					    <option>Standard Rate</option>
+                  	    <option>Flate Rate</option>
+                  	    <option>No Charge</option>
+                	</select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-4 text-right">Tracking Number</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="trackNShip.trackingID"></input>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-4 text-right">Package Our Cost</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="trackNShip.packageCharge"></input>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-4 text-right">Customer Charge</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="trackNShip.shippingCharge | currency" disabled></input>
+                </div>
+            </div>
+
+            
+        </div>
+        <div class="modal-footer">
+                    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+                    <button class="btn btn-primary" ng-click="ok()">Save</button>
+        </div>
+    </script>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>OrderShipTracking<br></h3> 
+                    <p>Add to this page: ordership/partials/order.view.ship.addEdit.html<br></p>
+                    <p>Button for "Add Shipping Charge" goes next to the save button</p>
+                    <p>Table goes underneath everything else on order.view.ship.addEdit.html</p> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <button class="btn btn-default" ng-click="open()">
+                        <span class="glyphicon glyphicon-plus"></span> Add Shipping Charge
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-striped table-hover table-bordered">
+                        <tr>
+                            <th>ID #</th>
+                            <th>Shipping Company</th>
+                            <th>Shipping Service</th>
+                            <th>Tracking #</th>
+                            <th>Charge</th>
+                            <th></th>
+                        </tr>
+                        <tr ng-repeat="record in records">
+                            <td>
+                                <a href="" ng-click="open()">{{record.kp_OrderShipTrackingID}}</a>
+                            </td>
+                            <td>{{record.t_Company}}</td>
+                            <td>{{record.t_ShipperService}}</td>
+                            <td>{{record.t_TrackingID}}</td>
+                            <td>{{record.n_ShippingCharge | currency }}</td>
+                            <td align="center">
+                                <span class="glyphicon glyphicon-remove" span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>

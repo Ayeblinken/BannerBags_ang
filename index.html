@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+    <title>Inventory Shipping</title>
+    <!-- Bootstrap core CSS -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="new.css" rel="stylesheet">
+    <link rel="stylesheet" href="./Banner Bags_files/bannerBags1.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <!-- UI Select Styles and JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.min.js"></script>
+    <script>
+        // Please note that $modalInstance represents a modal window (instance) dependency.
+        // It is not the same as the $modal service used above.
+
+        myApp.controller('MyCtrl', function ($scope) {
+
+        });
+    </script>
+</head>
+
+<body ng-app="myApp" ng-controller="MyCtrl">
+
+
+    <!-- THIS IS A CONTAINER TO HOLD JUMBOTRONS, FORMS, TABLE, AND OTHER ELEMENTS.-->
+    <div class="container">
+
+        <!-- DIV WITH JUMBOTRON FOR ACTUAL SIZE INPUTS AND BANNER BAG IMAGE.-->
+        <div class="row">
+            <div class="col-md-4"> 
+
+                <!-- FORM WITH INPUTS FOR WIDTH, HEIGHT, AND GUTTERSIZE. CONTAINS "NO LACE" CHECKBOX.-->
+                <form class="form-horizontal">
+                    <div>
+                        <legend>ACTUAL FACE SIZE</legend>
+
+                        <div class="form-group" id="face_Height">
+                            <label class="col-sm-6 control-label sizeFont">HEIGHT</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control sizeFont" placeholder="inches">
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="face_Width">
+                            <label class="col-sm-6 control-label sizeFont">WIDTH</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control sizeFont" placeholder="inches">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label class="col-sm-6 control-label sizeFont">GUTTER</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control sizeFont" placeholder="inches">
+                            </div>
+                        </div>
+
+                        <div class="col-md-12" id="nolacebag">
+                            <label class="checkbox">
+                                <input class="checkboxID" type="checkbox" value="">Do Not Wrap Bottom</label>
+                        </div>
+                    </div>
+                </form>
+                <!--END OF FIRST FORM.-->
+
+            </div>
+
+            <div class="col-md-8 box withWrap">
+                <img src="./Banner Bags_files/withWrap.jpg" alt="Pillowcase Sign Bags" height="270" width="730">
+            </div>
+            <div class="col-md-8 box noWrap" id="noWrap">
+                <img src="./Banner Bags_files/noWrap.jpg" alt="Pillowcase Sign Bags" height="270" width="730">
+            </div>
+            <!-- END OF SPAN8.-->
+        </div>
+
+        <!-- END OF ROW FLUID.-->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="sizeFont">
+                    <form class="form-inline">
+                        <table class="table table-striped table-condensed">
+
+                            <tbody>
+                                <!-- TABLE CELLS FOR IDENTIFYING ROWS AND COLUMNS.-->
+                                <tr>
+
+                                    <td class="col-md-2">FACE</td>
+                                    <td class="col-md-3"></td>
+                                    <td class="col-md-3"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1">T</td>
+                                    <td class="col-md-1h">B</td>
+                                    <td class="col-md-1">L</td>
+                                    <td class="col-md-1">R</td>
+                                </tr>
+                                <!-- TABLE CELLS FACE VALUES.-->
+                                <tr>
+                                    <td class="col-md-1">BLEED</td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-1">WHITE</td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-1">POCKET</td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+
+                </div>
+            </div>
+            <!-- THIS IS THE END OF PREPRESS DIV.-->
+
+            <!-- THIS DIV CONTAINS ALL ELEMENTS FOR FINISHING NOTES.-->
+            <div class="col-md-4">
+                <div class="sizeFont">
+
+
+                    <form class="form-inline">
+                        <table id="giventable" class="table table-striped table-condensed">
+
+                            <tbody>
+                                <!-- TABLE CELLS FOR IDENTIFYING ROWS AND COLUMNS.-->
+                                <tr>
+                                    <td class="col-md-2">L-SIDE</td>
+                                    <td class="col-md-3"></td>
+                                    <td class="col-md-3"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1">T</td>
+                                    <td class="col-md-1">B</td>
+                                    <td class="col-md-1">L</td>
+                                    <td class="col-md-1">R</td>
+                                </tr>
+                                <!-- TABLE CELLS FACE VALUES.-->
+                                <tr>
+                                    <td class="col-md-1">BLEED</td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-1">WHITE</td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-1">POCKET</td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+
+                </div>
+            </div>
+            <!-- THIS IS THE END OF FINISHING DIV.-->
+
+            <!-- THIS DIV CONTAINS ALL ELEMENTS FOR FINISHING NOTES.-->
+            <div class="col-md-4">
+                <div class="sizeFont">
+                    <form class="form-inline" id="bannerbagsGiven" name="bannerbagsGiven">
+                        <table id="giventable" class="table table-striped table-condensed">
+                            <thead>
+                                <tr>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <!-- TABLE CELLS FOR IDENTIFYING ROWS AND COLUMNS.-->
+                                <tr>
+                                    <td class="col-md-2">R-SIDE</td>
+                                    <td class="col-md-3"></td>
+                                    <td class="col-md-3"></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1">T</td>
+                                    <td class="col-md-1">B</td>
+                                    <td class="col-md-1">L</td>
+                                    <td class="col-md-1">R</td>
+                                </tr>
+                                <!-- TABLE CELLS FACE VALUES.-->
+                                <tr>
+                                    <td class="col-md-1">BLEED</td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-1">WHITE</td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-1">POCKET</td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                    <td class="col-md-1"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+
+                </div>
+            </div>
+            <!-- THIS IS THE END OF FINISHING DIV.-->
+
+        </div>
+        <!-- THIS IS THE END OF PREPRESS AND FINISHING DIVS.-->
+
+
+        <!-- THIS DIV CONTAINS HERO UNIT AND ALL ELEMENTS FOR PREPRESS NOTES.-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    <legend>PREPRESS NOTES</legend>
+
+                    <form class="form-inline">
+
+                        <div>
+                            <textarea class="form-control sizeFont" id="copytext" name="copytext" rows="3" cols="40" for="prepress_face_Height prepressface_Width prepress_gutterSize"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- THIS IS THE END OF PREPRESS DIV.-->
+
+            <!-- THIS DIV CONTAINS ALL ELEMENTS FOR FINISHING NOTES.-->
+            <div class="col-md-6">
+                <div class="well sizeFont">
+                    <legend>FINISHING</legend>
+
+                    <form class="form-inline" id="finishingSizes" name="finishingSizes">
+
+
+                        <div>
+                            <textarea class="form-control sizeFont" id="copytext2" name="copytext2" rows="3" cols="40" for="prepress_face_Height prepressface_Width prepress_gutterSize"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- THIS IS THE END OF FINISHING DIV.-->
+        </div>
+        <!-- THIS IS THE END OF PREPRESS AND FINISHING DIVS.-->
+
+        <!-- RESET BUTTON FOR ALL FORM ELEMENTS.-->
+        <div>
+            <input type="button" class="btn-primary btn-small userreset col-md-offset-10" onclick="clearForms()" value="RESET CALCULATOR">
+        </div>
+    </div>
+    <!-- THIS IS THE END OF MAIN CONTAINER.-->
+
+
+
+
+
+
+    <script src="./Banner Bags_files/bannerBag.js"></script>
+    <script src="./Banner Bags_files/plugin_v2.js"></script>
+    <script>
+    </script>
+
+
+</body>
+
+</html>
